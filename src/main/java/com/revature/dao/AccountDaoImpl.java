@@ -1,12 +1,12 @@
 package com.revature.dao;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.revature.model.Account;
 import com.revature.model.Customer;
@@ -19,11 +19,14 @@ public class AccountDaoImpl implements AccountDAO {
 
 		try (Connection conn = ConnectionUtils.getConnection()) {
 
-			String sql = "insert into accounts(accid, balance, f_name, l_name)" + "values(?,?,?,?)";
+			String sql = "insert into accounts(accid, balance, f_name, l_name)" + " values(?,?,?,?)";
 			PreparedStatement statement = conn.prepareStatement(sql);
 
+			// cast to big decimal for SQL money type
+			BigDecimal bal = BigDecimal.valueOf(a.getBalance());
+
 			statement.setInt(1, a.getAccID());
-			statement.setDouble(2, a.getBalance());
+			statement.setBigDecimal(2, bal);
 			statement.setString(3, a.getFirstName());
 			statement.setString(4, a.getLastName());
 
@@ -38,13 +41,34 @@ public class AccountDaoImpl implements AccountDAO {
 	}
 
 	@Override
-	public boolean removeAccount(Account a) {
+	public boolean addAccID(String username, int accid) {
 
 		try (Connection conn = ConnectionUtils.getConnection()) {
-			String sql = "Delete from accounts where accid = ?";
+
+			String sql = "insert into accounts_to_id (username, accid) values (?, ?)";
+			PreparedStatement statement = conn.prepareStatement(sql);
+
+			statement.setString(1, username);
+			statement.setInt(2, accid);
+
+			statement.execute();
+			return true;
+
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean removeAccount(int accid) {
+
+		try (Connection conn = ConnectionUtils.getConnection()) {
+			String sql = "delete from accounts where accid = ?; delete from accounts_to_id where accid = ?;";
 
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setInt(1, a.getAccID());
+			statement.setInt(1, accid);
+			statement.setInt(2, accid);
 
 			statement.execute();
 
@@ -152,6 +176,27 @@ public class AccountDaoImpl implements AccountDAO {
 			balance = result.getDouble(1);
 
 			return balance;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	public int getAvailableAccountId() {
+
+		try (Connection conn = ConnectionUtils.getConnection()) {
+
+			String sql = "select max(accid) from accounts ";
+
+			Statement statement = conn.createStatement();
+
+			ResultSet result = statement.executeQuery(sql);
+
+			result.next();
+			int accid = result.getInt(1);
+			accid++;
+			return accid;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

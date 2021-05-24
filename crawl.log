@@ -1,2 +1,11 @@
 TRACE	2021-05-22 14:46:26,522	0	com.revature.driver.Menu	[main]	Deposit of: $20.0 received, Account balance: $180.5
 TRACE	2021-05-22 14:46:49,242	22720	com.revature.driver.Menu	[main]	Deposit of: $10.0 received, Account balance: $170.5
+TRACE	2021-05-24 12:05:54,091	0	com.revature.driver.Menu	[main]	Withdrawl of: $200.5 completed, Account balance: $0.0
+TRACE	2021-05-24 12:13:01,037	0	com.revature.driver.Menu	[main]	Withdrawl of: $0.0 completed, Account balance: $0.0
+TRACE	2021-05-24 14:05:48,280	0	com.revature.driver.Menu	[main]	Withdrawl of: $0.0 completed, Account balance: $0.0
+TRACE	2021-05-24 14:06:35,192	46912	com.revature.driver.Menu	[main]	Deposit of: $10.0 received, Account balance: $10.0
+TRACE	2021-05-24 14:08:28,922	0	com.revature.driver.Menu	[main]	Withdrawl of: $0.0 completed, Account balance: $0.0
+TRACE	2021-05-24 14:10:17,138	0	com.revature.driver.Menu	[main]	Withdrawl of: $10.0 completed, Account balance: $0.0
+TRACE	2021-05-24 14:11:04,088	46950	com.revature.driver.Menu	[main]	Deposit of: $15.0 received, Account balance: $120.5
+TRACE	2021-05-24 14:29:39,266	0	com.revature.driver.Menu	[main]	Withdrawl of: $0.0 completed, Account balance: $0.0
+TRACE	2021-05-24 16:11:14,391	0	com.revature.driver.Menu	[main]	Deposit of: $130.2 received, Account balance: $130.2

@@ -35,13 +35,13 @@ public class CustomerDaoImpl implements CustomerDAO {
 	}
 
 	@Override
-	public boolean removeCustomer(Customer c) {
+	public boolean removeCustomer(String username) {
 
 		try (Connection conn = ConnectionUtils.getConnection()) {
 			String sql = "delete from customers where username = ?";
 
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, c.getUsername());
+			statement.setString(1, username);
 
 			statement.execute();
 
@@ -82,6 +82,35 @@ public class CustomerDaoImpl implements CustomerDAO {
 
 		return null;
 	}
+	
+	@Override
+	public ArrayList<Customer> getPending() {
+
+		try (Connection conn = ConnectionUtils.getConnection()) {
+
+			String sql = "select * from customers where username not in (select username from accounts_to_id )";
+			Statement statement = conn.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+
+			ArrayList<Customer> customerList = new ArrayList<Customer>();
+
+			while (result.next()) {
+				Customer c = new Customer(result.getString("username"), result.getString("password"),
+						result.getString("f_name"), result.getString("l_name"), null);
+				customerList.add(c);
+
+			}
+
+			return customerList;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
+	
 
 	@Override
 	public String getPassword(String username) {

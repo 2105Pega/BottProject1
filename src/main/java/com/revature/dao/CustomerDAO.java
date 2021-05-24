@@ -8,7 +8,7 @@ public interface CustomerDAO {
 
 	public boolean addCustomer(Customer c);
 
-	public boolean removeCustomer(Customer c);
+	public boolean removeCustomer(String username);
 
 	public boolean updateCustomer(Customer c, String field, String value);
 
@@ -17,5 +17,7 @@ public interface CustomerDAO {
 	Customer getCustomer(String username);
 
 	public ArrayList<Customer> getListOfCustomer();
+
+	ArrayList<Customer> getPending();
 
 }

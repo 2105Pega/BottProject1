@@ -67,16 +67,19 @@ public class Driver {
 				Customer loggedIn = Menu.menuLogin(sc);
 
 				if (!loggedIn.getFirstName().equals("base")) {
-					Menu.listUserAccounts(loggedIn.getAccounts());
-					int accountSelected = Menu.accountSelection(sc, loggedIn.getAccounts());
-					Menu.accountFeatures(sc, accountSelected);
-
 					// logged in user functions
-
+					Menu.listUserAccounts(loggedIn.getAccounts());
+					
+					//prevent unregistered user from adding accounts
+					if (!loggedIn.getAccounts().isEmpty()) {
+						int accountSelected = Menu.accountSelection(sc, loggedIn.getAccounts(), loggedIn.getUsername());
+						Menu.accountFeatures(sc, accountSelected);
+					}
 				}
 
 			} else if (loginSelection == 2) {
 				// account application steps
+				Menu.MenuApplyForAcct(sc);
 
 			} else if (loginSelection == 3) {
 				System.out.println("goodbye");

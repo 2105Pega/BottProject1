@@ -6,7 +6,6 @@ import com.revature.model.Account;
 import com.revature.model.Customer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountDaoImpl;
@@ -26,9 +25,9 @@ public class Services {
 
 	}
 
-	public String removeCustomer(Customer c) {
+	public String removeCustomer(String username) {
 
-		if (eDaoCustomer.removeCustomer(c)) {
+		if (eDaoCustomer.removeCustomer(username)) {
 
 			return "Customer was successfully removed from the database!";
 		} else {
@@ -92,13 +91,13 @@ public class Services {
 		}
 	}
 
-	public String removeAccount(Account a) {
+	public String removeAccount(int accid) {
 
-		if (eDaoAccount.removeAccount(a)) {
+		if (eDaoAccount.removeAccount(accid)) {
 
-			return "Employee was successfully removed from the database!";
+			return "Account was successfully removed from the database!";
 		} else {
-			return "Employee was not successfully removed from the database!";
+			return "Account was not successfully removed from the database!";
 		}
 	}
 
@@ -110,6 +109,25 @@ public class Services {
 		} else {
 			return "Account not was successfully updated in the database!";
 		}
+	}
+
+	public int getAvailableAccountId() {
+
+		int availableAccount = eDaoAccount.getAvailableAccountId();
+		return availableAccount;
+
+	}
+
+	public void addAccID(String username, int accid) {
+
+		eDaoAccount.addAccID(username, accid);
+
+	}
+
+	public ArrayList<Customer> getPending() {
+		ArrayList<Customer> customer = eDaoCustomer.getPending();
+		return customer;
+
 	}
 
 }
