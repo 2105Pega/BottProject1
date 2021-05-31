@@ -1,3 +1,0 @@
-DB_Password=Inthecourse123
-DB_Username=postgres
-URL=jdbc:postgresql://sql-demo-database-1.chpcst4egchx.us-east-2.rds.amazonaws.com:5432/Sqldemo
