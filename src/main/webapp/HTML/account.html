@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account page</title>
+    <script src="../JS/scipt.js"></script>
+
+</head>
+
+
+
+
+
+<body onload="load_accounts()">
+
+    <h1>Hello, below your accounts are listed</h1>
+
+
+
+    <div style="margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+    "><button id="logout" type="button" onclick=logout()>Logout</button></div>
+
+
+    <div class="accounts">
+
+
+
+    </div>
+
+    <div class="account_buttons">
+
+        <p>
+            <label for="withdrawOrDeposit">Enter $ amount to withdraw or deposit</label>
+            <input type="number" id="withdrawOrDeposit">
+
+            <label for="account_selected">Account ID to alter</label>
+            <input type="number" id="account_selected">
+            <button id="withdraw" onclick="withdraw()">Withdraw</button>
+
+            <button id="deposit" onclick="deposit()">Deposit</button>
+
+        </p>
+        <p><button id="add_account" onclick="add_account()">Add account</button></p>
+
+
+    </div>
+
+</body>
+
+</html>
