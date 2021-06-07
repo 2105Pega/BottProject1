@@ -25,7 +25,7 @@ public class ConnectionUtils {
 		String password = "";
 
 		try {
-			FileInputStream fileStream = new FileInputStream("../Project1/src/main/resources/DB_properties");
+			FileInputStream fileStream = new FileInputStream("C:\\Users\\james\\OneDrive\\Desktop\\Git\\BatchSource\\Week1\\Project1\\src\\main\\resources\\DB_properties");
 
 			Properties prop = new Properties();
 			prop.load(fileStream);

@@ -75,7 +75,7 @@ public class Controller extends HttpServlet {
 	}
 
 	@Path("/deposit")
-	@GET
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void deposit (AccountsAndBalance idAndBal) {
 		
@@ -99,7 +99,7 @@ public class Controller extends HttpServlet {
 	}
 	
 	@Path("/withdraw")
-	@GET
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void withdraw (AccountsAndBalance idAndBal) {
 		
@@ -119,6 +119,24 @@ public class Controller extends HttpServlet {
 
 		logger.setLevel(Level.TRACE);
 		logger.trace(text);
+		
+	}
+	
+	@Path("/addaccount")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void addAccount(String username) {
+		
+		
+		Services userServ = new Services();
+		int accid = userServ.getAvailableAccountId();
+		String fName = userServ.getCustomer(username).getFirstName();
+		String lName = userServ.getCustomer(username).getLastName();
+
+		Account account = new Account(accid, 0, fName, lName);
+
+		userServ.addAccID(username, accid);
+		userServ.addAccount(account);
 		
 	}
 	

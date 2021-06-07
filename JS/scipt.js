@@ -8,15 +8,16 @@ function login_user() {
         password: password,
     };
 
-    console.log(payload);
 
     let url = `http://localhost:8080/Project1/api/c/login`;
+
+
 
     let request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         console.log("ready state changed", this.readyState);
         if (this.readyState == 4) {
-            let validLogin = JSON.parse(this.response);
+            validLogin = JSON.parse(this.response);
 
             console.log(validLogin);
             if (validLogin) {
@@ -37,7 +38,7 @@ function logout() {
 }
 
 // likely need to pass username
-function load_accounts(username) {
+function load_accounts() {
 
     let url = `http://localhost:8080/Project1/api/c/account`;
 
@@ -61,8 +62,7 @@ function load_accounts(username) {
 
     }
 
-    request.open("POST", url);
-    request.send(JSON.stringify(username));
+
 }
 
 
