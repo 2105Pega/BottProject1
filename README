@@ -1,0 +1,9 @@
+Create a banking application with an HTML/CSS/JavaScript frontend and a Java backend that accomplishes the same functionality as P0. 
+Your backend can follow several different architecture types, including RESTful and monolithic.
+
+Customers of the bank should be able to register with a username and password, and apply to open an account. 
+Once the account is open, customers should be able to withdraw, deposit, and transfer funds between accounts 
+Employees of the bank should be able to view all of their customers information Employees should be able to approve/deny open applications for accounts 
+Every Java class should have at least one unit test Logging should be accomplished using Log4J All user interactions should be via a frontend 
+made in HTML, CSS, and JavaScript All information should be persisted using AJAX requests to initiate database operations
+
